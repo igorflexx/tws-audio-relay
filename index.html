@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TWS Audio Relay</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <p class="eyebrow">TWS Audio Relay</p>
+        <h1>Передай звук с компьютера на iPhone по Wi‑Fi</h1>
+        <p class="lead">
+          Компьютер открывает эту страницу как источник, iPhone подключается как приемник.
+          Передача идет напрямую между устройствами через WebRTC внутри одной сети.
+        </p>
+      </section>
+
+      <section class="panel mode-panel">
+        <div class="mode-buttons">
+          <button id="hostModeButton" class="mode-button">Я на компьютере</button>
+          <button id="listenerModeButton" class="mode-button secondary">Я на iPhone</button>
+        </div>
+        <div class="room-row">
+          <label for="roomInput">Комната</label>
+          <input id="roomInput" type="text" maxlength="8" spellcheck="false">
+          <button id="newRoomButton" class="ghost-button">Новый код</button>
+        </div>
+      </section>
+
+      <section id="hostSection" class="panel hidden">
+        <div class="panel-header">
+          <div>
+            <p class="section-kicker">Источник</p>
+            <h2>Компьютер передает звук</h2>
+          </div>
+          <span id="hostBadge" class="badge">Ожидание</span>
+        </div>
+
+        <div class="share-grid">
+          <div class="share-card">
+            <p class="share-label">Ссылка для iPhone</p>
+            <input id="shareLink" type="text" readonly>
+            <div class="button-row">
+              <button id="copyLinkButton">Копировать ссылку</button>
+              <button id="refreshQrButton" class="secondary">Обновить QR</button>
+            </div>
+          </div>
+
+          <div class="qr-card">
+            <p class="share-label">QR-код</p>
+            <div class="qr-frame">
+              <img id="qrImage" alt="QR code for iPhone connection">
+            </div>
+          </div>
+        </div>
+
+        <div class="button-row large">
+          <button id="shareScreenAudioButton">Транслировать вкладку / системный звук</button>
+          <button id="shareMicButton" class="secondary">Использовать микрофон</button>
+          <button id="stopBroadcastButton" class="ghost-button">Остановить</button>
+        </div>
+
+        <div class="notes">
+          <p>Лучший сценарий для Windows: открыть страницу в Chrome или Edge, выбрать вкладку или экран и включить системный звук.</p>
+          <p>На macOS браузеры обычно лучше отдают звук вкладки, чем весь системный аудиовыход.</p>
+        </div>
+      </section>
+
+      <section id="listenerSection" class="panel hidden">
+        <div class="panel-header">
+          <div>
+            <p class="section-kicker">Приемник</p>
+            <h2>iPhone принимает поток</h2>
+          </div>
+          <span id="listenerBadge" class="badge">Подключение</span>
+        </div>
+
+        <div class="button-row large">
+          <button id="activateAudioButton">Подключиться и включить звук</button>
+        </div>
+
+        <audio id="remoteAudio" controls playsinline autoplay></audio>
+
+        <div class="notes">
+          <p>iPhone может попросить один раз нажать кнопку воспроизведения. Это нормально из-за ограничений Safari.</p>
+          <p>Оба устройства должны быть в одной Wi‑Fi сети.</p>
+        </div>
+      </section>
+
+      <section class="panel status-panel">
+        <div class="panel-header">
+          <div>
+            <p class="section-kicker">Статус</p>
+            <h2>Что происходит сейчас</h2>
+          </div>
+        </div>
+        <p id="statusText" class="status-line">Подготовка локального соединения…</p>
+        <ul id="eventLog" class="event-log"></ul>
+      </section>
+    </main>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+  </html>

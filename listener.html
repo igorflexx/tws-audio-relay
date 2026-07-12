@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TWS Audio Relay Listener</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <p class="eyebrow">TWS Audio Relay</p>
+        <h1>iPhone принимает звук</h1>
+        <p class="lead">
+          Оставь эту страницу открытой на iPhone, затем запусти трансляцию на компьютере.
+        </p>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <div>
+            <p class="section-kicker">Приемник</p>
+            <h2>Подключение к комнате</h2>
+          </div>
+          <span id="listenerBadge" class="badge">Подключение</span>
+        </div>
+
+        <div class="room-row">
+          <label for="roomLabel">Комната</label>
+          <input id="roomLabel" type="text" readonly>
+        </div>
+
+        <div class="button-row large">
+          <button id="activateAudioButton">Включить звук</button>
+          <button id="reloadButton" class="secondary">Обновить подключение</button>
+        </div>
+
+        <audio id="remoteAudio" controls playsinline autoplay></audio>
+
+        <div class="notes">
+          <p>Если звука нет, сначала нажми кнопку включения, затем оставь страницу открытой.</p>
+          <p>Компьютер и iPhone должны быть в одной Wi-Fi сети.</p>
+        </div>
+      </section>
+
+      <section class="panel status-panel">
+        <div class="panel-header">
+          <div>
+            <p class="section-kicker">Статус</p>
+            <h2>Что происходит сейчас</h2>
+          </div>
+        </div>
+        <p id="statusText" class="status-line">Загрузка страницы на iPhone…</p>
+        <ul id="eventLog" class="event-log"></ul>
+      </section>
+    </main>
+
+    <script src="/listener.js"></script>
+  </body>
+  </html>
