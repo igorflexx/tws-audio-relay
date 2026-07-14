@@ -12,5 +12,3 @@
 - `styles.css` - общие стили интерфейса.
 - `start-local.command` - локальный запуск сервера из терминала `macOS` или `Linux`.
 - `runlocalwin.cmd` - локальный запуск сервера из `Windows Terminal`, `cmd` или PowerShell.
-- `runwin.cmd` - запуск сервера из `Windows Terminal`, `cmd` или PowerShell.
-- `stop-local.command` - остановка локального сервера.
