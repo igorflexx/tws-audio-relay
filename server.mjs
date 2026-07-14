@@ -7,7 +7,9 @@ import QRCode from "qrcode";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const publicDir = path.join(__dirname, "public");
+const publicDir = existsSync(path.join(__dirname, "public"))
+  ? path.join(__dirname, "public")
+  : __dirname;
 const bindHost = "0.0.0.0";
 const port = Number(process.env.PORT || 4312);
 const rooms = new Map();
