@@ -11,7 +11,14 @@
 
 ## Быстрый запуск
 
-1. Запусти [start-local.command](/Users/a1/Projects/tws-audio-relay/start-local.command)
+Файлы `*.command` в этом проекте - это обычные bash-скрипты для терминала.
+
+1. Запусти терминальный скрипт:
+
+```bash
+bash ./start-local.command
+```
+
 2. На компьютере выбери режим `Я на компьютере`
 3. Отсканируй QR-код с iPhone
 4. На компьютере нажми `Транслировать вкладку / системный звук`
@@ -21,10 +28,10 @@
 
 ## Если iPhone не открывает страницу
 
-- Сначала заново запусти [start-local.command](/Users/a1/Projects/tws-audio-relay/start-local.command). Теперь он поднимает сервер в фоне и ждет готовности.
+- Сначала заново запусти `bash ./start-local.command`. Теперь он поднимает сервер в фоне и ждет готовности.
 - Убедись, что ПК и iPhone подключены к одной Wi-Fi сети.
 - Открывай на iPhone не `localhost`, а адрес из QR-кода или сетевой адрес вида `http://192.168.x.x:4312`.
-- Если нужно остановить локальный сервер, используй [stop-local.command](/Users/a1/Projects/tws-audio-relay/stop-local.command).
+- Если нужно остановить локальный сервер, используй `bash ./stop-local.command`.
 
 ## Ограничения
 
