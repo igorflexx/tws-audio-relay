@@ -10,5 +10,7 @@
 - `index.html` - основная страница для компьютера.
 - `listener.html` - отдельная страница-приёмник для телефона.
 - `styles.css` - общие стили интерфейса.
-- `start-local.command` - запуск локального сервера.
+- `start-local.command` - локальный запуск сервера из терминала `macOS` или `Linux`.
+- `runlocalwin.cmd` - локальный запуск сервера из `Windows Terminal`, `cmd` или PowerShell.
+- `runwin.cmd` - запуск сервера из `Windows Terminal`, `cmd` или PowerShell.
 - `stop-local.command` - остановка локального сервера.
