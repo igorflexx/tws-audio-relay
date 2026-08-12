@@ -66,9 +66,29 @@ if is_running; then
 else
   rm -f "$PID_FILE"
   echo "Starting TWS Audio Relay..."
-  cd "$PROJECT_DIR"
-  nohup "$NODE_BIN" "$PROJECT_DIR/server.mjs" >"$LOG_FILE" 2>&1 &
-  echo $! >"$PID_FILE"
+  SERVER_PID="$(
+    /usr/bin/python3 - "$NODE_BIN" "$PROJECT_DIR" "$LOG_FILE" <<'PY'
+import os
+import subprocess
+import sys
+
+node_bin, project_dir, log_file = sys.argv[1:4]
+
+with open(log_file, "ab", buffering=0) as logfile, open(os.devnull, "rb") as devnull:
+    proc = subprocess.Popen(
+        [node_bin, "server.mjs"],
+        cwd=project_dir,
+        stdin=devnull,
+        stdout=logfile,
+        stderr=subprocess.STDOUT,
+        start_new_session=True,
+        close_fds=True,
+    )
+
+print(proc.pid)
+PY
+  )"
+  echo "$SERVER_PID" >"$PID_FILE"
 fi
 
 for _ in {1..30}; do
